@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <img alt="Near Blockchain logo" src="../assets/logo.png">
+    <HelloNear msg="Welcome to NEAR!"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import HelloWorld from './components/HelloWorld.vue'
+import HelloNear from './HelloNear.vue'
+import NotSigned from './NotSigned.vue'
+
+import 'regenerator-runtime/runtime'
+import { login, logout, onSubmit } from './utils'
+import '../global.css'
+
+import getConfig from '../config'
+
+const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 @Component({
   components: {
-    HelloWorld
+    HelloNear
   }
 })
 export default class App extends Vue {}

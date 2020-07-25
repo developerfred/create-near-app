@@ -1,89 +1,116 @@
 {
-  "name": "near-blank-project",
-  "version": "0.1.0",
-  "license": "UNLICENSED",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build:contract": "node asconfig.js",
-    "build:web": "parcel build src/index.html --public-url ./",
-    "test:unit": "vue-cli-service test:unit",
-    "dev:deploy:contract": "near dev-deploy",
-    "deploy:contract": "near deploy",
-    "deploy:pages": "gh-pages -d dist/",
-    "deploy": "npm run build && npm run deploy:contract && npm run deploy:pages",
-    "prestart": "npm run build:contract && npm run dev:deploy:contract",
-    "lint": "vue-cli-service lint",
-    "start": "echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./neardev/dev-account.env parcel src/index.html --open",
-    "dev": "nodemon --watch assembly -e ts --exec \"npm run start\"",
-    "test": "asp --nologo && npm run build:contract && jest test --runInBand"
-  },
-  "dependencies": {
-    "near-api-js": "^0.27.0",
-    "core-js": "^3.6.5",
-    "register-service-worker": "^1.7.1",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.2.3",
-    "vue-property-decorator": "^8.4.2"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-plugin-pwa": "~4.4.0",
-    "@vue/cli-plugin-typescript": "~4.4.0",
-    "@vue/cli-plugin-unit-jest": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
-    "@vue/eslint-config-standard": "^5.1.2",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^1.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "typescript": "~3.9.3",
-    "vue-template-compiler": "^2.6.11",
-    "near-sdk-as": "^0.5.0",
-    "near-shell": "^0.24.9",
-    "parcel-bundler": "^1.12.4"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
+    "name": "near-blank-project",
+    "version": "0.1.0",
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "build:contract": "node asconfig.js",
+        "build:web": "parcel build src/index.html --public-url ./",
+        "dev:deploy:contract": "near dev-deploy",
+        "deploy:contract": "near deploy",
+        "deploy:pages": "gh-pages -d dist/",
+        "deploy": "npm run build && npm run deploy:contract && npm run deploy:pages",
+        "prestart": "npm run build:contract && npm run dev:deploy:contract",
+        "start": "echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./neardev/dev-account.env parcel src/index.html --open",
+        "dev": "nodemon --watch assembly -e ts --exec \"npm run start\"",
+        "test": "asp --nologo && npm run build:contract && jest test --runInBand",
+        "format": "prettier --write \"src/**/*.{vue,js}\""
     },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard",
-      "@vue/typescript/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2020
+    "dependencies": {
+        "vue": "^2.6.11",
+        "core-js": "^3.6.5",
+        "near-api-js": "^0.27.0",
+        "register-service-worker": "^1.7.1",
+        "vue-class-component": "^7.2.3",
+        "vue-property-decorator": "^8.4.2",
+        "regenerator-runtime": "^0.13.5"
     },
-    "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
+    "devDependencies": {
+        "@babel/core": "^7.10.4",
+        "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+        "@babel/preset-env": "^7.10.4",
+        "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
+        "@vue/babel-plugin-transform-vue-jsx": "^1.1.2",
+        "@vue/component-compiler-utils": "^3.1.2",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-loader": "^8.1.0",
+        "jest-serializer-vue": "^2.0.2",
+        "lint-staged": "^10.2.11",
+        "@types/jest": "^24.0.19",
+        "prettier": "^2.0.5",
+        "rimraf": "^3.0.2",
+        "vue-hot-reload-api": "^2.3.4",
+        "vue-jest": "^3.0.5",
+        "vue-server-renderer": "^2.6.11",
+        "@typescript-eslint/eslint-plugin": "^2.33.0",
+        "@typescript-eslint/parser": "^2.33.0",
+        "@vue/eslint-config-standard": "^5.1.2",
+        "@vue/eslint-config-typescript": "^5.0.2",
+        "eslint": "^6.7.2",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.0",
+        "eslint-plugin-vue": "^6.2.2",
+        "typescript": "~3.9.3",
+        "vue-template-compiler": "^2.6.11",
+        "env-cmd": "^10.1.0",
+        "gh-pages": "^3.0.0",
+        "jest": "^26.0.1",
+        "jest-environment-node": "^26.0.0",
+        "near-sdk-as": "^0.5.0",
+        "near-shell": "^0.24.9",
+        "nodemon": "^2.0.3",
+        "parcel-bundler": "^1.12.4",
+        "babel-jest": "^26.0.0"
+    },
+    "eslintConfig": {
+        "root": true,
         "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "jest": {
-    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
-  }
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "@vue/standard",
+            "@vue/typescript/recommended"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 2020
+        },
+        "rules": {},
+        "overrides": [{
+            "files": [
+                "**/__tests__/*.{j,t}s?(x)",
+                "**/tests/unit/**/*.spec.{j,t}s?(x)"
+            ],
+            "env": {
+                "jest": true
+            }
+        }]
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ],
+    "jest": {
+        "moduleNameMapper": {
+            "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+            "\\.(css|less)$": "<rootDir>/src/__mocks__/fileMock.js"
+        },
+        "setupFiles": [
+            "<rootDir>/src/jest.init.js"
+        ],
+        "testEnvironment": "near-shell/test_environment",
+        "testPathIgnorePatterns": [
+            "<rootDir>/assembly/",
+            "<rootDir>/node_modules/"
+        ],
+        "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
+    },
+    "lint-staged": {
+        "*.{js,json,vue}": [
+            "prettier --write"
+        ]
+    }
 }
